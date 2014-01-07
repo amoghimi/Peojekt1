@@ -1,0 +1,60 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package duplicateList;
+
+import java.util.ArrayList;
+import org.springframework.util.StringUtils;
+
+
+import java.util.List;
+
+
+/**
+ *
+ * @author amoghimi
+ */
+public class TestDuplicatelist{
+   public List<Student> newVal = new ArrayList<Student>();
+
+    private  List<Student> concateSameNameFromList(Student elem, List<Student> sList) {
+         //To change body of generated methods, choose Tools | Templates.
+        List<Student> removeVal = new ArrayList<Student>();
+        
+        if(subList.size() <= 1)
+            return newVal;
+        for(Student st : sList){
+           if(st.getName()==elem.getName() && st.getNachname() != elem.getNachname()){
+               elem.concatNachname(elem,st);
+               removeIndex.add(st);
+           }
+       }
+       
+       int index = sList.indexOf(elem);
+       sList.removeAll(removeIndex);
+       newVal.add(elem);
+       return concateSameNameFromList( sList.get(index+1),  sList.subList(index+1, subList.size()));        
+       
+    }
+
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        TestAmir tm = new TestAmir();
+        List<myTestClass> testList = new ArrayList<myTestClass>();
+        testList.add(new myTestClass("amir", "moghimi"));
+        testList.add(new myTestClass("ali", "moghimi"));
+        testList.add(new myTestClass("hamid", "sol"));
+        testList.add(new myTestClass("amir", "kim"));
+        testList.add(new myTestClass("genadij", "drujini"));
+        testList.add(new myTestClass("amir", "chung"));
+        testList=tm.concateSameNameFromList((testList.get(0)),testList);
+        for(myTestClass test : testList){
+            System.out.println(test.getName()+"   "+test.getNachname());
+        }
+      }
+    }
